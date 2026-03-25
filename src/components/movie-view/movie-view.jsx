@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { MovieCard } from '../moovie-card/movie-card';
+import { MovieCard } from '../movie-card/movie-card';
 import {
   Row,
   Col,

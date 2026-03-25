@@ -8,7 +8,7 @@ import {
   Container,
   Modal,
 } from 'react-bootstrap';
-import { MovieCard } from '../moovie-card/movie-card';
+import { MovieCard } from '../movie-card/movie-card';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../config';
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
-import { MovieCard } from '../moovie-card/movie-card';
+import { MovieCard } from '../movie-card/movie-card';
 import PropTypes from 'prop-types';
 import { API_URL } from '../../config';
 import './searchresults-view.scss';
