@@ -39354,7 +39354,6 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
         setSearchParams(emptyParams);
         performSearch(emptyParams);
     };
-    const [key, setKey] = (0, _react.useState)('global');
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
@@ -39377,7 +39376,7 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                             children: "Global Search"
                                         }, void 0, false, {
                                             fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                            lineNumber: 167,
+                                            lineNumber: 166,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -39390,18 +39389,18 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                             size: "lg"
                                         }, void 0, false, {
                                             fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                            lineNumber: 170,
+                                            lineNumber: 169,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                    lineNumber: 166,
+                                    lineNumber: 165,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                lineNumber: 165,
+                                lineNumber: 164,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -39417,18 +39416,18 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                     children: "Search"
                                 }, void 0, false, {
                                     fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                    lineNumber: 182,
+                                    lineNumber: 181,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                lineNumber: 181,
+                                lineNumber: 180,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                        lineNumber: 164,
+                        lineNumber: 163,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -39445,7 +39444,7 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                             children: "Filter by Genre"
                                         }, void 0, false, {
                                             fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                            lineNumber: 190,
+                                            lineNumber: 189,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Select, {
@@ -39461,7 +39460,7 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                                     children: "All Genres"
                                                 }, void 0, false, {
                                                     fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                                    lineNumber: 201,
+                                                    lineNumber: 200,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 options.genres.map((genre)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -39469,24 +39468,24 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                                         children: genre
                                                     }, genre, false, {
                                                         fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                                        lineNumber: 203,
+                                                        lineNumber: 202,
                                                         columnNumber: 19
                                                     }, undefined))
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                            lineNumber: 193,
+                                            lineNumber: 192,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                    lineNumber: 189,
+                                    lineNumber: 188,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                lineNumber: 188,
+                                lineNumber: 187,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -39500,7 +39499,7 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                             children: "Filter by Director"
                                         }, void 0, false, {
                                             fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                            lineNumber: 212,
+                                            lineNumber: 211,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Select, {
@@ -39516,7 +39515,7 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                                     children: "All Directors"
                                                 }, void 0, false, {
                                                     fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                                    lineNumber: 223,
+                                                    lineNumber: 222,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 options.directors.map((director)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -39524,24 +39523,24 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                                         children: director
                                                     }, director, false, {
                                                         fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                                        lineNumber: 225,
+                                                        lineNumber: 224,
                                                         columnNumber: 19
                                                     }, undefined))
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                            lineNumber: 215,
+                                            lineNumber: 214,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                    lineNumber: 211,
+                                    lineNumber: 210,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                lineNumber: 210,
+                                lineNumber: 209,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -39555,7 +39554,7 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                             children: "Filter by Actor"
                                         }, void 0, false, {
                                             fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                            lineNumber: 234,
+                                            lineNumber: 233,
                                             columnNumber: 15
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Select, {
@@ -39571,7 +39570,7 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                                     children: "All Actors"
                                                 }, void 0, false, {
                                                     fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                                    lineNumber: 245,
+                                                    lineNumber: 244,
                                                     columnNumber: 17
                                                 }, undefined),
                                                 options.actors.map((actor)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -39579,24 +39578,24 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                                         children: actor
                                                     }, actor, false, {
                                                         fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                                        lineNumber: 247,
+                                                        lineNumber: 246,
                                                         columnNumber: 19
                                                     }, undefined))
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                            lineNumber: 237,
+                                            lineNumber: 236,
                                             columnNumber: 15
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                    lineNumber: 233,
+                                    lineNumber: 232,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                lineNumber: 232,
+                                lineNumber: 231,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -39610,24 +39609,24 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                                     children: "Reset"
                                 }, void 0, false, {
                                     fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                    lineNumber: 255,
+                                    lineNumber: 254,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                                lineNumber: 254,
+                                lineNumber: 253,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                        lineNumber: 187,
+                        lineNumber: 186,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                lineNumber: 163,
+                lineNumber: 162,
                 columnNumber: 7
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39636,7 +39635,7 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                 children: error
             }, void 0, false, {
                 fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                lineNumber: 268,
+                lineNumber: 267,
                 columnNumber: 9
             }, undefined),
             isLoading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39651,12 +39650,12 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                             children: "Loading..."
                         }, void 0, false, {
                             fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                            lineNumber: 276,
+                            lineNumber: 275,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                        lineNumber: 275,
+                        lineNumber: 274,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39664,13 +39663,13 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                         children: "Searching for movies..."
                     }, void 0, false, {
                         fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                        lineNumber: 278,
+                        lineNumber: 277,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                lineNumber: 274,
+                lineNumber: 273,
                 columnNumber: 9
             }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 children: movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -39680,12 +39679,12 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                         children: "No movies found matching your search criteria."
                     }, void 0, false, {
                         fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                        lineNumber: 284,
+                        lineNumber: 283,
                         columnNumber: 15
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                    lineNumber: 283,
+                    lineNumber: 282,
                     columnNumber: 13
                 }, undefined) : movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         xs: 12,
@@ -39697,27 +39696,27 @@ const SearchResultsView = ({ user, token, onToggleFavorite, isMovieFavorite })=>
                             onToggleFavorite: onToggleFavorite
                         }, void 0, false, {
                             fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                            lineNumber: 291,
+                            lineNumber: 290,
                             columnNumber: 17
                         }, undefined)
                     }, movie.id, false, {
                         fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                        lineNumber: 290,
+                        lineNumber: 289,
                         columnNumber: 15
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/searchresults-view/searchresults-view.jsx",
-                lineNumber: 281,
+                lineNumber: 280,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/searchresults-view/searchresults-view.jsx",
-        lineNumber: 162,
+        lineNumber: 161,
         columnNumber: 5
     }, undefined);
 };
-_s(SearchResultsView, "C+YYhb30kir1XktM4SWtfa06ooA=", false, function() {
+_s(SearchResultsView, "3+ZARK4kHjtlfmaY/WM2FvkbnKU=", false, function() {
     return [
         (0, _reactRouterDom.useLocation)
     ];

@@ -157,7 +157,6 @@ export const SearchResultsView = ({
     setSearchParams(emptyParams);
     performSearch(emptyParams);
   };
-  const [key, setKey] = useState('global');
   return (
     <Container>
       <Form onSubmit={handleSearch} className='mb-4'>
