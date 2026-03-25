@@ -34,10 +34,10 @@ importers:
         version: 1.98.0
     devDependencies:
       '@parcel/transformer-sass':
-        specifier: ^2.14.4
+        specifier: ^2.16.4
         version: 2.16.4(@parcel/core@2.16.4(@swc/helpers@0.5.19))
       parcel:
-        specifier: ^2.14.4
+        specifier: ^2.16.4
         version: 2.16.4(@swc/helpers@0.5.19)
 
 packages:
