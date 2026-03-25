@@ -118,4 +118,76 @@ describe('SignupView', () => {
     expect(screen.getByLabelText(/password/i)).toHaveValue('');
     expect(screen.getByLabelText(/email/i)).toHaveValue('');
   });
+
+  it('calls the correct endpoint with expected payload', async () => {
+    const user = userEvent.setup();
+    global.fetch.mockResolvedValueOnce({ ok: true });
+    renderSignup();
+
+    await fillForm(user);
+    await user.click(screen.getByRole('button', { name: /submit/i }));
+
+    await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalledWith(
+        expect.stringContaining('/users'),
+        expect.objectContaining({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            Username: 'validuser',
+            Password: 'ValidPass1!',
+            Email: 'test@example.com',
+            Birthday: '2000-01-15',
+          }),
+        })
+      );
+    });
+  });
+
+  it('displays server-side validation errors', async () => {
+    const user = userEvent.setup();
+    global.fetch.mockResolvedValueOnce({
+      ok: false,
+      json: () =>
+        Promise.resolve({
+          errors: [
+            { msg: 'Username already exists' },
+            { msg: 'Email is already registered' },
+          ],
+        }),
+    });
+    renderSignup();
+
+    await fillForm(user);
+    await user.click(screen.getByRole('button', { name: /submit/i }));
+
+    await waitFor(() => {
+      const alert = screen.getByRole('alert');
+      expect(alert).toHaveTextContent(/username already exists/i);
+      expect(alert).toHaveTextContent(/email is already registered/i);
+    });
+  });
+
+  it('shows loading spinner during submission', async () => {
+    const user = userEvent.setup();
+    let resolveFetch;
+    global.fetch.mockReturnValueOnce(
+      new Promise((resolve) => {
+        resolveFetch = resolve;
+      })
+    );
+    renderSignup();
+
+    await fillForm(user);
+    await user.click(screen.getByRole('button', { name: /submit/i }));
+
+    expect(screen.getByText(/signing up/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /signing up/i })).toBeDisabled();
+
+    resolveFetch({ ok: true });
+
+    await waitFor(() => {
+      expect(screen.queryByText(/signing up/i)).not.toBeInTheDocument();
+    });
+  });
 });

@@ -103,4 +103,26 @@ describe('LoginView', () => {
       expect(screen.queryByText(/logging in/i)).not.toBeInTheDocument();
     });
   });
+
+  it('writes token and user to localStorage on success', async () => {
+    const user = userEvent.setup();
+    const mockUser = { Username: 'testuser' };
+    global.fetch.mockResolvedValueOnce({
+      json: () => Promise.resolve({ user: mockUser, token: 'abc123' }),
+    });
+
+    renderLogin();
+
+    await user.type(screen.getByLabelText(/username/i), 'testuser');
+    await user.type(screen.getByLabelText(/password/i), 'mypassword');
+    await user.click(screen.getByRole('button', { name: /submit/i }));
+
+    await waitFor(() => {
+      expect(Storage.prototype.setItem).toHaveBeenCalledWith('token', 'abc123');
+      expect(Storage.prototype.setItem).toHaveBeenCalledWith(
+        'user',
+        JSON.stringify(mockUser)
+      );
+    });
+  });
 });

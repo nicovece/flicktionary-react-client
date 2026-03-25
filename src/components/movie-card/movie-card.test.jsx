@@ -52,4 +52,12 @@ describe('MovieCard', () => {
       screen.getByRole('button', { name: /add to favorites/i })
     ).toBeInTheDocument();
   });
+
+  it('does not render favorite button when onToggleFavorite is not provided', () => {
+    renderCard();
+
+    expect(
+      screen.queryByRole('button', { name: /favorites/i })
+    ).not.toBeInTheDocument();
+  });
 });
