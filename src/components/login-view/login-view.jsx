@@ -22,10 +22,7 @@ export const LoginView = ({ onLoggedIn }) => {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => {
-        if (!response.ok) throw new Error('Login failed');
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
         if (data.user) {
           localStorage.setItem('token', data.token);
@@ -35,7 +32,7 @@ export const LoginView = ({ onLoggedIn }) => {
           alert('No such user');
         }
       })
-      .catch((e) => {
+      .catch(() => {
         alert('Something went wrong');
       });
   };
