@@ -101,4 +101,54 @@ describe('SearchResultsView', () => {
       );
     });
   });
+
+  it('shows error alert when search fails', async () => {
+    // Options fetch succeeds, search fetch fails
+    global.fetch
+      .mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve(mockApiMovies),
+      })
+      .mockResolvedValueOnce({
+        ok: false,
+      });
+
+    renderSearch();
+
+    await waitFor(() => {
+      expect(screen.getByRole('alert')).toHaveTextContent(/search failed/i);
+    });
+    expect(screen.getByText(/no movies found/i)).toBeInTheDocument();
+  });
+
+  it('shows loading spinner while searching', async () => {
+    let resolveSearch;
+    // Options fetch resolves immediately
+    global.fetch.mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve(mockApiMovies),
+    });
+    // Search fetch hangs
+    global.fetch.mockReturnValueOnce(
+      new Promise((resolve) => {
+        resolveSearch = resolve;
+      })
+    );
+
+    renderSearch();
+
+    await waitFor(() => {
+      expect(screen.getByText(/searching for movies/i)).toBeInTheDocument();
+    });
+
+    resolveSearch({
+      ok: true,
+      json: () => Promise.resolve(mockApiMovies),
+    });
+
+    await waitFor(() => {
+      expect(screen.queryByText(/searching for movies/i)).not.toBeInTheDocument();
+      expect(screen.getByText('Inception')).toBeInTheDocument();
+    });
+  });
 });
