@@ -34,6 +34,8 @@ export const SearchResultsView = ({
 
   // Fetch options for dropdowns
   useEffect(() => {
+    if (!token) return;
+    const controller = new AbortController();
     const fetchOptions = async () => {
       try {
         const response = await fetch(
@@ -42,6 +44,7 @@ export const SearchResultsView = ({
             headers: {
               Authorization: `Bearer ${token}`,
             },
+            signal: controller.signal,
           }
         );
 
@@ -68,13 +71,14 @@ export const SearchResultsView = ({
           actors,
         });
       } catch (err) {
-        setError('Failed to load filter options');
+        if (err.name !== 'AbortError') {
+          setError('Failed to load filter options');
+        }
       }
     };
 
-    if (token) {
-      fetchOptions();
-    }
+    fetchOptions();
+    return () => controller.abort();
   }, [token]);
 
   const performSearch = async (params) => {

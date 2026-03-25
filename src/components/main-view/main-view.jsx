@@ -30,10 +30,12 @@ const MainView = () => {
   // Fetch movies from API
   useEffect(() => {
     if (!token) return;
+    const controller = new AbortController();
     fetch(`${API_URL}/movies`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      signal: controller.signal,
     })
       .then((response) => {
         if (!response.ok) throw new Error('Failed to fetch movies');
@@ -42,17 +44,21 @@ const MainView = () => {
       .then((data) => {
         setMovies(data.map(mapMovieFromApi));
       })
-      .catch(() => {});
+      .catch((err) => {
+        if (err.name !== 'AbortError') return;
+      });
+    return () => controller.abort();
   }, [token]);
 
   // Fetch user's favorite movies from user object
   useEffect(() => {
     if (!user || !token) return;
-
+    const controller = new AbortController();
     fetch(`${API_URL}/users/${user.Username}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      signal: controller.signal,
     })
       .then((response) => {
         if (!response.ok) throw new Error('Failed to fetch user data');
@@ -63,7 +69,10 @@ const MainView = () => {
           setFavoriteMovies(userData.FavoriteMovies);
         }
       })
-      .catch(() => {});
+      .catch((err) => {
+        if (err.name !== 'AbortError') return;
+      });
+    return () => controller.abort();
   }, [user, token]);
 
   // Function to toggle favorite status
