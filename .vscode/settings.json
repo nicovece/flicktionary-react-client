@@ -1,0 +1,14 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBarBadge.background": "#000000",
+    "titleBar.activeBackground": "#1e1e1e",
+    "statusBarItem.hoverBackground": "#be0095",
+    "panel.border": "#ffffff1a",
+    "sideBar.border": "#ffffff1a",
+    "tab.activeBorder": "#be0095",
+    "activityBar.background": "#3E2446",
+    "titleBar.inactiveBackground": "#3E2446",
+    "titleBar.inactiveForeground": "#FBF9FC"
+  },
+  "snyk.advanced.autoSelectOrganization": true
+}
