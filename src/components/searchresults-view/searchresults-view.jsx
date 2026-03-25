@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
@@ -29,6 +29,7 @@ export const SearchResultsView = ({
     actors: [],
   });
   const location = useLocation();
+  const debounceTimer = useRef(null);
 
   // Fetch options for dropdowns
   useEffect(() => {
@@ -75,15 +76,6 @@ export const SearchResultsView = ({
     }
   }, [token]);
 
-  // Debounce function to limit API calls
-  const debounce = (func, wait) => {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func(...args), wait);
-    };
-  };
-
   const performSearch = async (params) => {
     try {
       setIsLoading(true);
@@ -129,14 +121,8 @@ export const SearchResultsView = ({
     }
   };
 
-  // Create a debounced version of performSearch
-  const debouncedSearch = useCallback(
-    debounce((params) => performSearch(params), 500),
-    [token]
-  );
-
+  // Load search params from URL on mount
   useEffect(() => {
-    // Get search parameters from URL
     const params = new URLSearchParams(location.search);
     const searchQuery = {
       q: params.get('q') || '',
@@ -150,17 +136,14 @@ export const SearchResultsView = ({
     performSearch(searchQuery);
   }, [location]);
 
-  // Effect to trigger search when searchParams change
-  useEffect(() => {
-    debouncedSearch(searchParams);
-  }, [searchParams, debouncedSearch]);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setSearchParams((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    const updated = { ...searchParams, [name]: value };
+    setSearchParams(updated);
+    clearTimeout(debounceTimer.current);
+    debounceTimer.current = setTimeout(() => {
+      performSearch(updated);
+    }, 500);
   };
 
   const handleSearch = (e) => {
