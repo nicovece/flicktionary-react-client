@@ -245,11 +245,7 @@ const MainView = () => {
                   ) : (
                     <MovieView
                       movies={movies}
-                      isFavorite={isMovieFavorite(
-                        movies.find(
-                          (m) => m.id === location.pathname.split('/')[2]
-                        )?.id
-                      )}
+                      isMovieFavorite={isMovieFavorite}
                       onToggleFavorite={toggleFavorite}
                     />
                   )}
