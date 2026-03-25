@@ -6,7 +6,6 @@ import {
   Row,
   Col,
   Container,
-  Button,
   Modal,
 } from 'react-bootstrap';
 import { MovieCard } from '../moovie-card/movie-card';
