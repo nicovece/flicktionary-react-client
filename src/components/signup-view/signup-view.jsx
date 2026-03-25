@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../config';
 export const SignupView = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +18,7 @@ export const SignupView = () => {
       Birthday: birthday,
     };
 
-    fetch('https://flicktionary.onrender.com/users', {
+    fetch(`${API_URL}/users`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

@@ -10,6 +10,7 @@ import {
 } from 'react-bootstrap';
 import { MovieCard } from '../moovie-card/movie-card';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../config';
 
 export const ProfileView = ({
   user,
@@ -36,7 +37,7 @@ export const ProfileView = ({
     if (!user) return;
 
     // Fetch user information
-    fetch(`https://flicktionary.onrender.com/users/${user.Username}`, {
+    fetch(`${API_URL}/users/${user.Username}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -82,7 +83,7 @@ export const ProfileView = ({
       updateData.Password = formData.password;
     }
 
-    fetch(`https://flicktionary.onrender.com/users/${userInfo.Username}`, {
+    fetch(`${API_URL}/users/${userInfo.Username}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -116,7 +117,7 @@ export const ProfileView = ({
       return;
     }
 
-    fetch(`https://flicktionary.onrender.com/users/${userInfo.Username}`, {
+    fetch(`${API_URL}/users/${userInfo.Username}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,

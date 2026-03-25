@@ -9,6 +9,7 @@ import { SearchResultsView } from '../searchresults-view/searchresults-view';
 import { Footer } from '../footer/footer';
 import { Row, Col, Container } from 'react-bootstrap';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { API_URL } from '../../config';
 
 // MainViewContent component that uses useLocation
 const MainView = () => {
@@ -28,7 +29,7 @@ const MainView = () => {
   // Fetch movies from API
   useEffect(() => {
     if (!token) return;
-    fetch('https://flicktionary.onrender.com/movies', {
+    fetch(`${API_URL}/movies`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -54,7 +55,7 @@ const MainView = () => {
   useEffect(() => {
     if (!user || !token) return;
 
-    fetch(`https://flicktionary.onrender.com/users/${user.Username}`, {
+    fetch(`${API_URL}/users/${user.Username}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -93,7 +94,7 @@ const MainView = () => {
     setUser(updatedUser);
 
     // Use the correct endpoint structure for adding/removing favorite movies
-    const endpoint = `https://flicktionary.onrender.com/users/${user.Username}/movies/${movieId}`;
+    const endpoint = `${API_URL}/users/${user.Username}/movies/${movieId}`;
     const method = isFavorite ? 'DELETE' : 'POST';
 
     // Update user's favorite movies in the database

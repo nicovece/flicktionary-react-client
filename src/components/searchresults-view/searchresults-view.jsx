@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import { MovieCard } from '../moovie-card/movie-card';
 import PropTypes from 'prop-types';
+import { API_URL } from '../../config';
 import './searchresults-view.scss';
 
 export const SearchResultsView = ({
@@ -34,7 +35,7 @@ export const SearchResultsView = ({
     const fetchOptions = async () => {
       try {
         const response = await fetch(
-          'https://flicktionary.onrender.com/movies',
+          `${API_URL}/movies`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -94,7 +95,7 @@ export const SearchResultsView = ({
         if (value) queryString.append(key, value);
       });
 
-      const url = `https://flicktionary.onrender.com/search?${queryString.toString()}`;
+      const url = `${API_URL}/search?${queryString.toString()}`;
 
       const response = await fetch(url, {
         headers: {
