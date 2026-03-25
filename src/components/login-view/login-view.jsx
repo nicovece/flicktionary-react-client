@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../../config';
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (event) => {
     // this prevents the default behavior of the form which is to reload the entire page
     event.preventDefault();
+    setError('');
 
     const data = {
       Username: username,
@@ -29,16 +31,17 @@ export const LoginView = ({ onLoggedIn }) => {
           localStorage.setItem('user', JSON.stringify(data.user));
           onLoggedIn(data.user, data.token);
         } else {
-          alert('No such user');
+          setError('Invalid username or password');
         }
       })
       .catch(() => {
-        alert('Something went wrong');
+        setError('Something went wrong. Please try again.');
       });
   };
 
   return (
     <Form onSubmit={handleSubmit}>
+      {error && <Alert variant='danger' onClose={() => setError('')} dismissible>{error}</Alert>}
       <div className='d-flex justify-content-between align-items-center border-bottom border-secondary mb-4 pb-3'>
         <h4 className='mb-0'>Login</h4>
         <span>
