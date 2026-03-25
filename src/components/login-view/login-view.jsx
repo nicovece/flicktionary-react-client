@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../../config';
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (event) => {
     // this prevents the default behavior of the form which is to reload the entire page
@@ -17,6 +18,7 @@ export const LoginView = ({ onLoggedIn }) => {
       Password: password,
     };
 
+    setIsLoading(true);
     fetch(`${API_URL}/login`, {
       method: 'POST',
       headers: {
@@ -36,6 +38,9 @@ export const LoginView = ({ onLoggedIn }) => {
       })
       .catch(() => {
         setError('Something went wrong. Please try again.');
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -73,8 +78,15 @@ export const LoginView = ({ onLoggedIn }) => {
           className='border-primary'
         />
       </Form.Group>
-      <Button variant='primary' type='submit' className='btn-lg'>
-        Submit
+      <Button variant='primary' type='submit' className='btn-lg' disabled={isLoading}>
+        {isLoading ? (
+          <>
+            <Spinner animation='border' size='sm' className='me-2' />
+            Logging in...
+          </>
+        ) : (
+          'Submit'
+        )}
       </Button>
     </Form>
   );
