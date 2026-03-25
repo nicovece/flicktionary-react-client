@@ -22,7 +22,10 @@ export const LoginView = ({ onLoggedIn }) => {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) throw new Error('Login failed');
+        return response.json();
+      })
       .then((data) => {
         if (data.user) {
           localStorage.setItem('token', data.token);

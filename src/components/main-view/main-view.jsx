@@ -34,7 +34,10 @@ const MainView = () => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to fetch movies');
+        return response.json();
+      })
       .then((data) => {
         const moviesFromApi = data.map((movie) => ({
           id: movie._id,
@@ -48,7 +51,8 @@ const MainView = () => {
         }));
 
         setMovies(moviesFromApi);
-      });
+      })
+      .catch(() => {});
   }, [token]);
 
   // Fetch user's favorite movies from user object
@@ -60,7 +64,10 @@ const MainView = () => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to fetch user data');
+        return response.json();
+      })
       .then((userData) => {
         if (userData.FavoriteMovies) {
           setFavoriteMovies(userData.FavoriteMovies);
