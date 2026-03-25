@@ -4,6 +4,7 @@ import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
 import PropTypes from 'prop-types';
 import { API_URL } from '../../config';
+import { mapMovieFromApi } from '../../utils/mapMovie';
 import './searchresults-view.scss';
 
 export const SearchResultsView = ({
@@ -101,18 +102,7 @@ export const SearchResultsView = ({
 
       const data = await response.json();
 
-      const moviesFromApi = data.map((movie) => ({
-        id: movie._id,
-        title: movie.Title,
-        description: movie.Description,
-        director: movie.Director.Name,
-        genre: movie.Genre.Name,
-        image: movie.ImagePath,
-        featured: movie.Featured,
-        actors: movie.Actors,
-      }));
-
-      setMovies(moviesFromApi);
+      setMovies(data.map(mapMovieFromApi));
     } catch (err) {
       setError(err.message || 'An error occurred while searching for movies');
       setMovies([]);

@@ -10,6 +10,7 @@ import { Footer } from '../footer/footer';
 import { Row, Col, Container } from 'react-bootstrap';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { API_URL } from '../../config';
+import { mapMovieFromApi } from '../../utils/mapMovie';
 
 // MainViewContent component that uses useLocation
 const MainView = () => {
@@ -39,18 +40,7 @@ const MainView = () => {
         return response.json();
       })
       .then((data) => {
-        const moviesFromApi = data.map((movie) => ({
-          id: movie._id,
-          title: movie.Title,
-          description: movie.Description,
-          director: movie.Director.Name,
-          genre: movie.Genre.Name,
-          image: movie.ImagePath,
-          featured: movie.Featured,
-          actors: movie.Actors,
-        }));
-
-        setMovies(moviesFromApi);
+        setMovies(data.map(mapMovieFromApi));
       })
       .catch(() => {});
   }, [token]);
