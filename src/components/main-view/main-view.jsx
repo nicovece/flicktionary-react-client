@@ -27,6 +27,24 @@ const MainView = () => {
   // token
   const [token, setToken] = useState(storedToken ? storedToken : null);
 
+  // Update page title based on current route
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/') {
+      document.title = 'Flicktionary';
+    } else if (path === '/login') {
+      document.title = 'Login - Flicktionary';
+    } else if (path === '/signup') {
+      document.title = 'Signup - Flicktionary';
+    } else if (path === '/profile') {
+      document.title = 'Profile - Flicktionary';
+    } else if (path.startsWith('/movies/')) {
+      const movieId = path.split('/')[2];
+      const movie = movies.find((m) => m.id === movieId);
+      document.title = movie ? `${movie.title} - Flicktionary` : 'Flicktionary';
+    }
+  }, [location.pathname, movies]);
+
   // Fetch movies from API
   useEffect(() => {
     if (!token) return;
