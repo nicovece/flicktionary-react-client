@@ -34,52 +34,6 @@ export const SignupView = () => {
   };
 
   return (
-    // <div className='signup_view'>
-    //   <h2>Signup</h2>
-    //   <form onSubmit={handleSubmit}>
-    //     <label>
-    //       Username:
-    //       <input
-    //         type='text'
-    //         value={username}
-    //         onChange={(e) => setUsername(e.target.value)}
-    //         required
-    //         minLength='3'
-    //       />
-    //     </label>
-    //     <label>
-    //       Password:
-    //       <input
-    //         type='password'
-    //         value={password}
-    //         onChange={(e) => setPassword(e.target.value)}
-    //         required
-    //       />
-    //     </label>
-    //     <label>
-    //       Email:
-    //       <input
-    //         type='email'
-    //         value={email}
-    //         onChange={(e) => setEmail(e.target.value)}
-    //         required
-    //       />
-    //     </label>
-    //     <label>
-    //       Birthday:
-    //       <input
-    //         type='date'
-    //         value={birthday}
-    //         onChange={(e) => setBirthday(e.target.value)}
-    //         required
-    //       />
-    //     </label>
-    //     <button className='main_button' type='submit'>
-    //       Submit
-    //     </button>
-    //   </form>
-    //   </div>
-
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col className='col-12 d-flex justify-content-between align-items-center border-bottom border-secondary mb-4 pb-3'>
