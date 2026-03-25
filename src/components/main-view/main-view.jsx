@@ -159,7 +159,8 @@ const MainView = () => {
           pathname={location.pathname}
           onLoggedOut={() => {
             setUser(null);
-            localStorage.clear();
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
           }}
         />
       </Container>
@@ -219,7 +220,8 @@ const MainView = () => {
                       onToggleFavorite={toggleFavorite}
                       onLoggedOut={() => {
                         setUser(null);
-                        localStorage.clear();
+                        localStorage.removeItem('user');
+            localStorage.removeItem('token');
                       }}
                     />
                   )}
@@ -269,7 +271,8 @@ const MainView = () => {
         pathname={location.pathname}
         onLoggedOut={() => {
           setUser(null);
-          localStorage.clear();
+          localStorage.removeItem('user');
+          localStorage.removeItem('token');
         }}
       />
     </>
