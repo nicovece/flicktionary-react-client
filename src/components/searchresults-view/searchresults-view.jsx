@@ -65,7 +65,6 @@ export const SearchResultsView = ({
           actors,
         });
       } catch (err) {
-        console.error('Error fetching options:', err);
         setError('Failed to load filter options');
       }
     };
@@ -96,7 +95,6 @@ export const SearchResultsView = ({
       });
 
       const url = `https://flicktionary.onrender.com/search?${queryString.toString()}`;
-      console.log('Searching with URL:', url);
 
       const response = await fetch(url, {
         headers: {
@@ -109,7 +107,6 @@ export const SearchResultsView = ({
       }
 
       const data = await response.json();
-      console.log('Search results:', data);
 
       const moviesFromApi = data.map((movie) => ({
         id: movie._id,
@@ -124,7 +121,6 @@ export const SearchResultsView = ({
 
       setMovies(moviesFromApi);
     } catch (err) {
-      console.error('Search error:', err);
       setError(err.message || 'An error occurred while searching for movies');
       setMovies([]);
     } finally {

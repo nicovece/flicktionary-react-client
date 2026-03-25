@@ -54,8 +54,7 @@ export const ProfileView = ({
             : '',
         });
       })
-      .catch((error) => {
-        console.error('Error fetching user info:', error);
+      .catch(() => {
         setError('Failed to fetch user information');
       });
   }, [user]);
@@ -104,8 +103,7 @@ export const ProfileView = ({
         // Clear password field after successful update
         setFormData((prev) => ({ ...prev, password: '' }));
       })
-      .catch((error) => {
-        console.error('Error updating profile:', error);
+      .catch(() => {
         setError('Failed to update profile');
       });
   };
@@ -132,8 +130,7 @@ export const ProfileView = ({
         onLoggedOut();
         navigate('/login');
       })
-      .catch((error) => {
-        console.error('Error deregistering:', error);
+      .catch(() => {
         setError('Failed to deregister');
       });
   };

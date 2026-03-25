@@ -23,7 +23,6 @@ export const LoginView = ({ onLoggedIn }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Login response: ', data);
         if (data.user) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('user', JSON.stringify(data.user));
@@ -35,7 +34,6 @@ export const LoginView = ({ onLoggedIn }) => {
       .catch((e) => {
         alert('Something went wrong');
       });
-    console.log('Login response: ', data);
   };
 
   return (

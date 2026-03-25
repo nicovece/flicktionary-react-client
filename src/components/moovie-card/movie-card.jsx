@@ -8,15 +8,7 @@ export const MovieCard = ({ movie, isFavorite, onToggleFavorite }) => {
     e.stopPropagation(); // Stop event propagation
 
     if (onToggleFavorite && movie && movie.id) {
-      console.log('MovieCard: Toggling favorite for movie:', movie.id);
-      console.log('Movie details:', movie);
       onToggleFavorite(movie.id);
-    } else {
-      console.log('Cannot toggle favorite: missing data', {
-        hasToggleFunction: !!onToggleFavorite,
-        hasMovie: !!movie,
-        movieId: movie?.id,
-      });
     }
   };
 

@@ -35,7 +35,6 @@ const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('movies from api:', data);
         const moviesFromApi = data.map((movie) => ({
           id: movie._id,
           title: movie.Title,
@@ -46,7 +45,6 @@ const MainView = () => {
           featured: movie.Featured,
           actors: movie.Actors,
         }));
-        // console.log('movies from api:', moviesFromApi);
 
         setMovies(moviesFromApi);
       });
@@ -63,29 +61,18 @@ const MainView = () => {
     })
       .then((response) => response.json())
       .then((userData) => {
-        console.log('user data:', userData);
         if (userData.FavoriteMovies) {
           setFavoriteMovies(userData.FavoriteMovies);
         }
       })
-      .catch((error) => {
-        console.error('Error fetching user data:', error);
-      });
+      .catch(() => {});
   }, [user, token]);
 
   // Function to toggle favorite status
   const toggleFavorite = (movieId) => {
-    if (!user || !token) {
-      console.error('Cannot toggle favorite: user or token is missing');
-      return;
-    }
-
-    console.log('Toggling favorite for movie ID:', movieId);
-    console.log('Current favorite movies:', favoriteMovies);
-    console.log('Current user:', user);
+    if (!user || !token) return;
 
     const isFavorite = favoriteMovies.includes(movieId);
-    console.log('Is favorite?', isFavorite);
 
     let updatedFavorites;
 
@@ -96,8 +83,6 @@ const MainView = () => {
       // Add to favorites
       updatedFavorites = [...favoriteMovies, movieId];
     }
-
-    console.log('Updated favorites:', updatedFavorites);
 
     // First, update the local state to provide immediate feedback
     setFavoriteMovies(updatedFavorites);
@@ -111,13 +96,6 @@ const MainView = () => {
     const endpoint = `https://flicktionary.onrender.com/users/${user.Username}/movies/${movieId}`;
     const method = isFavorite ? 'DELETE' : 'POST';
 
-    console.log('Sending request to:', endpoint);
-    console.log('Request method:', method);
-    console.log('Request headers:', {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    });
-
     // Update user's favorite movies in the database
     fetch(endpoint, {
       method: method,
@@ -127,20 +105,11 @@ const MainView = () => {
       },
     })
       .then(async (response) => {
-        console.log('Response status:', response.status);
-        console.log(
-          'Response headers:',
-          Object.fromEntries(response.headers.entries())
-        );
-
         const responseText = await response.text();
-        console.log('Raw response:', responseText);
 
         if (response.ok) {
-          console.log('Successfully updated favorites on server');
           try {
             const responseData = JSON.parse(responseText);
-            console.log('Parsed response data:', responseData);
 
             // Update the state with the server response
             if (responseData.FavoriteMovies) {
@@ -153,27 +122,16 @@ const MainView = () => {
               setUser(newUser);
             }
           } catch (e) {
-            console.log('Response is not JSON:', e);
+            // Response is not JSON
           }
         } else {
-          console.error('Failed to update favorites on server');
-          console.error('Status:', response.status);
-          console.error('Status text:', response.statusText);
-          console.error('Response text:', responseText);
-
           // Revert the local state if the server update fails
           setFavoriteMovies(favoriteMovies);
           localStorage.setItem('user', JSON.stringify(user));
           setUser(user);
         }
       })
-      .catch((error) => {
-        console.error('Error updating favorites on server:', error);
-        console.error('Error details:', {
-          message: error.message,
-          stack: error.stack,
-        });
-
+      .catch(() => {
         // Revert the local state if the server update fails
         setFavoriteMovies(favoriteMovies);
         localStorage.setItem('user', JSON.stringify(user));
@@ -185,11 +143,6 @@ const MainView = () => {
   const isMovieFavorite = (movieId) => {
     return favoriteMovies.includes(movieId);
   };
-
-  // Log the current location whenever it changes
-  useEffect(() => {
-    console.log('Current location:', location);
-  }, [location]);
 
   return (
     <>

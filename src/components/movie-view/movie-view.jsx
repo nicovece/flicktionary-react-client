@@ -22,9 +22,6 @@ export const MovieView = ({ movies, isFavorite, onToggleFavorite }) => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(() => {
-    console.log('MovieView - movieId from params:', movieId);
-    console.log('MovieView - available movies:', movies);
-
     if (!movieId || !movies || movies.length === 0) {
       setError('Movie ID or movies data is missing');
       setLoading(false);
@@ -32,7 +29,6 @@ export const MovieView = ({ movies, isFavorite, onToggleFavorite }) => {
     }
 
     const foundMovie = movies.find((m) => m.id === movieId);
-    console.log('MovieView - found movie:', foundMovie);
 
     if (foundMovie) {
       setMovie(foundMovie);
@@ -57,13 +53,10 @@ export const MovieView = ({ movies, isFavorite, onToggleFavorite }) => {
 
   // Update favoriteState when isFavorite prop changes
   useEffect(() => {
-    console.log('MovieView - isFavorite prop changed:', isFavorite);
     setFavoriteState(isFavorite);
   }, [isFavorite]);
 
   const handleToggleFavorite = (movieIdToToggle) => {
-    console.log('MovieView - Toggling favorite for movie:', movieIdToToggle);
-
     // If toggling the current movie
     if (movieIdToToggle === movieId) {
       // Update local state immediately for better UX
